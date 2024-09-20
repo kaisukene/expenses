@@ -60,9 +60,10 @@ const ExpenseForm = (props) => {
             date: new Date(enteredDate)
         }
         props.onSaveExpenseData(expenseData)
-        titleInputRef.current.value = ''
-        amountInputRef.current.value = ''
-        dateInputRef.current.value = ''
+        titleInputRef.current.value = '';
+        amountInputRef.current.value = '';
+        dateInputRef.current.value = '';
+
         // setUserInput({
         //     enteredTitle:'',
         //     enteredAmount:'',
@@ -85,48 +86,43 @@ const ExpenseForm = (props) => {
                 onConfirm={errorHandler}
             />
         )}
-        <form onSubmit={submitHandler}>
-            <div className='new-expense__controls'>
-                <div className='new-expense__control'>
-                    <label>Title</label>
-                    <input
-                        // onChange={titleChangeHandler}
-                        // value={userInput.enteredTitle}
-                        type="text"
-                        id= "title"
-                        ref={titleInputRef}
-                    />
-                </div>
-                <div className='new-expense__control'>
-                    <label>Amount</label>
-                    <input
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        id="amount"
-                        ref={amountInputRef}
-                        // onChange={amountChangeHandler}
-                        // value={userInput.enteredAmount}
-                    />
-                </div>
-                <div className='new-expense__control'>
-                    <label>Date</label>
-                    <input
-                        type="date"
-                        min="2023-01-18"
-                        max="2025-12-31"
-                        id="date"
-                        ref={dateInputRef}
-                        // onChange={dateChangeHandler}
-                        // value={userInput.enteredDate}
-                    />
-                </div>
-            </div>
-            <div>
-                <button type="submit">Add Expense</button>
-                <button onClick={() => props.setFormOpen(false)}>Cancel</button>
-            </div>
-        </form>
+       <form onSubmit={submitHandler}>
+    <div className='new-expense__controls'>
+        <div className='new-expense__control'>
+            <label htmlFor="title">Title</label> {/* Lisa htmlFor */}
+            <input
+                type="text"
+                id="title" /* Sisendi id peab vastama htmlFor väärtusele */
+                ref={titleInputRef}
+            />
+        </div>
+        <div className='new-expense__control'>
+            <label htmlFor="amount">Amount</label> {/* Lisa htmlFor */}
+            <input
+                type="number"
+                min="0.01"
+                step="0.01"
+                id="amount" /* Sisendi id peab vastama htmlFor väärtusele */
+                ref={amountInputRef}
+            />
+        </div>
+        <div className='new-expense__control'>
+            <label htmlFor="date">Date</label> {/* Lisa htmlFor */}
+            <input
+                type="date"
+                min="2023-01-18"
+                max="2025-12-31"
+                id="date" /* Sisendi id peab vastama htmlFor väärtusele */
+                ref={dateInputRef}
+            />
+        </div>
+    </div>
+    <div>
+        <button type="submit">Add Expense</button>
+        <button onClick={() => props.setFormOpen(false)}>Cancel</button>
+    </div>
+</form>
+
     </>
    
   )

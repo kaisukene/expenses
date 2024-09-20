@@ -1,18 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Error from '../Error'; // Kontrolli, et tee oleks õige
+import Error from '../Error'; // Veendu, et tee on õige
 
-test('renders error message and title', () => {
-  const div = document.createElement('div');
-  document.body.appendChild(div); // Lisa DOM element
-
-  render(<Error title="Error" message="Something went wrong" onConfirm={() => {}} />, { container: div });
-
-  const titleElement = screen.getByText('Error');
-  const messageElement = screen.getByText('Something went wrong');
-
+test('renders error message', () => {
+  render(<Error title="Test Title" message="Test Message" onConfirm={() => {}} />);
+  
+  const titleElement = screen.getByText(/Test Title/i);
+  const messageElement = screen.getByText(/Test Message/i);
+  
   expect(titleElement).toBeInTheDocument();
   expect(messageElement).toBeInTheDocument();
-
-  // Eemalda DOM element pärast testi
-  document.body.removeChild(div);
 });
